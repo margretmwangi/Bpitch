@@ -4,7 +4,7 @@ from flask_sqlalchemy import SQLAlchemy
 from forms import RegistrationForm, LoginForm
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = 'replace later '
+app.config['SECRET_KEY'] = 'reset later'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///peech.db'
 db = SQLAlchemy(app)
 
@@ -24,21 +24,8 @@ class Pitch(db.Model):
         return 'Pitch' + str(self.id)
 
 
-pitchs = [
-    {
-        'author': 'Kyle',
-        'title': 'Interview',
-        'content': 'Mind your IQ thanks',
-        
-    },
-    {
-        'author': 'Daffe',
-        'title': 'Life',
-        'content': 'Life is cruel',
-        
-    }
-]
 
+   
 
 
 @app.route('/')
