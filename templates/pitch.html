@@ -1,0 +1,52 @@
+{% extends 'base.html'%}
+
+{%block head%}
+<title>pitch moment</title>
+{%endblock%}
+
+{%block body%}
+<h1>Best minute pitches</h1>
+
+
+<hr>
+<h2>Heres the pitching board</h2>
+<form action="/pitch" method="POST">
+    Title:
+
+    <input class="form-control" type="text" name="title" placeholder=" Enter title" aria-label="Enter title">
+
+    <br>
+    Author:
+
+    <input class="form-control" type="text" name="author" placeholder=" Enter author" aria-label="Enter author">
+
+    <br>
+    <label for="content">Post</label>
+    <textarea class="form-control" name="content" id="content" placeholder=" Enter content" aria-label="Enter content"
+        rows="3"></textarea>
+
+    <br>
+    <input type="submit" value="Post">
+</form>
+<hr>
+
+{% for pitchs in pitchs %}
+<h2>{{ pitchs.title}}</h2>
+
+{% if pitchs.author %}
+
+<small> Written by {{ pitchs.author}} on {{pitchs.date_posted}}</small>
+{% else %}
+<small> Written by Unknown on {{pitchs.date_posted}}</small>
+{%endif%}
+<br>
+
+
+<p>{{ pitchs.content }}</p>
+<a class="btn btn-danger" href="/pitch/delete/{{pitchs.id}}">Delete</a>
+<a class="btn btn-success" href="/pitch/update/{{pitchs.id}}">Update</a>
+<hr>
+<br>
+{% endfor %}
+
+{%endblock%}

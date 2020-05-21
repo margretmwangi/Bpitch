@@ -1,0 +1,31 @@
+{% extends 'base.html'%}
+
+{%block head%}
+<title>Feel free to contribute to pitchs on the pitch board</title>
+{%endblock%}
+
+{%block body%} 
+
+<hr>
+<h2>Update pitch</h2>
+<form action="/posts" method="POST">
+Title:
+
+    <input class="form-control" type="text" name="title" id="title" value="{{pitchs.title}}" >
+
+<br>
+Author:
+
+<input class="form-control" type="text"  name="author" id="author" value="{{pitchs.author}}">
+
+<br>
+    <label for="content">Post</label>
+    <input class="form-control" type="text"  name="content" id="content" value="{{pitchs.content}}">
+
+<br>
+<input type="submit" value="Save">
+</form>
+<hr>
+
+
+{%endblock%}
